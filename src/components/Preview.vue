@@ -1,17 +1,17 @@
 <template>
-    <div class="template-editor">
+    <div class="preview">
 
     </div>
 </template>
 
 <script>
     export default {
-        name: "TemplateEditor"
+        name: "Preview"
     }
 </script>
 
 <style lang="scss" scoped>
-    .template-editor{
+    .preview{
         border: 1px solid red;
          max-width: 33%;
         flex-grow: 1;

@@ -1,5 +1,7 @@
 const source = `<template>
+<div>
 <p>{{ greeting }} World!</p>
+</div>
 </template>
 
 <script>

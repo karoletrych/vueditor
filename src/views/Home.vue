@@ -2,6 +2,7 @@
   <div class="home">
     <TemplateEditor />
     <TextEditor />
+    <Preview />
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 import Vue from 'vue';
 import TemplateEditor from '@/components/TemplateEditor.vue';
 import TextEditor from '@/components/TextEditor.vue';
+import Preview from '@/components/Preview.vue';
 
 export default Vue.extend({
   name: 'home',
   components: {
     TemplateEditor,
     TextEditor,
+    Preview
   },
 });
 </script>
