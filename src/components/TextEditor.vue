@@ -7,21 +7,21 @@
 
 <script>
     import source from './testSource.js';
-    const compiler = require('vue-template-compiler')
+    const compiler = require('vue-template-compiler');
     export default {
-        name: "TextEditor",
+        name: 'TextEditor',
         data() {
             return {
                 sourceCode: source
-            }
+            };
         },
         watch: {
             sourceCode(){
-                var ast = compiler.parseComponent(this.sourceCode);
+                const ast = compiler.parseComponent(this.sourceCode);
 
             }
         }
-    }
+    };
 </script>
 
 <style lang="scss" scoped>

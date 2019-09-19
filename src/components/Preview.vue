@@ -6,8 +6,8 @@
 
 <script>
     export default {
-        name: "Preview"
-    }
+        name: 'Preview'
+    };
 </script>
 
 <style lang="scss" scoped>
