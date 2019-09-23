@@ -1,3 +1,5 @@
+type Type = String | Number | Boolean | Object | Date| Function | Symbol; // TODO: Array?
+
 interface Prop
 {
     Name: string;
@@ -18,23 +20,36 @@ interface Method
 
 interface Component{
     Name: string;
-    Props: Prop[];
-    Computed: Computed[];
-    Methods: Method[];
-    Components: Component[];
+    Props: Record<string, Prop>;
+    Computed: Record<string, Computed>;
+    Methods: Record<string, Method>;
+    Components: Record<string, Component>;
 }
+
+const isComponent = (pluginPart: any) =>
+    typeof pluginPart !== 'function';
+
+const scanProp = (vueProp: [string, any]): Prop => {
+    return {
+        Default: vueProp[1].default,
+        Name: vueProp[0],
+        Type: vueProp[1].type
+    };
+};
 
 export const scan: (plugin: any) => Component[] =
     plugin => {
         const components =
             Object.values(plugin)
+                .filter(isComponent)
                 .map((component) => {
+                    const c = component as any;
                     return {
-                        Name: component.name,
-                        Props: (component.props as any[]),
-                        Computed: (component as any).computed,
-                        Methods: (component as any).methods,
-                        Components: (component as any).components
+                        Name: c.name as string,
+                        Props: Object.entries(c.props).map(scanProp).reduce( ,{}),
+                        Computed: [] as Computed[],
+                        Methods: [] as Method[],
+                        Components: [] as Component[]
                     };
                 }
             );
