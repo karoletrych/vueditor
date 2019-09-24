@@ -6,9 +6,6 @@ import KeenUI from 'keen-ui';
 import 'keen-ui/dist/keen-ui.css';
 import { scan } from '@/core/scanComponents';
 
-let k = KeenUI;
-scan(k);
-
 Vue.use(KeenUI);
 
 

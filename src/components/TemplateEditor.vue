@@ -4,17 +4,28 @@
             <option v-for="element in elements" :key="element">{{element}}</option>
         </select> 
 
+        <ul v-sortable="defaultOptions">
+            <li v-for="element in elements" :key="element">{{element}}</li>
+        </ul> 
     </div>
 </template>
 
 <script>
+    import sortableDirective from "./draggable.ts";
     export default {
         name: 'TemplateEditor',
         data(){
             return {
-                elements: ['volvo', 'saab', 'mercedes']
+                elements: ['volvo', 'saab', 'mercedes'],
+                defaultOptions: {
+                    draggable: 'li',
+                    mirror: {
+                        constrainDimensions: true,
+                    }
+                }
             };
-        }
+        },
+        directives: {sortableDirective}
     };
 </script>
 
