@@ -2,7 +2,7 @@
     <div class="template-editor">
 
         <ul v-sortable="defaultOptions" class="toolbox">
-            <li v-for="element in elements" :key="element">{{element}}</li>
+            <li v-for="element in toolboxElements" :key="element">{{element}}</li>
         </ul> 
         <div class="workspace">
             <Element/>
@@ -11,13 +11,18 @@
 </template>
 
 <script>
-    import sortableDirective from "./draggable.ts";
-    import Element from "./Element";
+    import sortableDirective from './draggable.ts';
+    import Element from './Element';
+    import store from '@/store'
     export default {
         name: 'TemplateEditor',
+        computed: {
+            toolboxElements(){
+                return store.state.toolbox.map(c=>c.Name);
+            }
+        },
         data(){
             return {
-                elements: ['volvo', 'saab', 'mercedes'],
                 defaultOptions: {
                     draggable: 'li',
                     mirror: {

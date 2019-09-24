@@ -1,31 +1,4 @@
-enum Type {String, Number, Boolean, Object, Date, Function, Symbol, Array}
-
-interface Prop
-{
-    Name: string;
-    Type: Type;
-    Default: any;
-}
-interface Computed
-{
-    Name: string;
-}
-
-interface Method
-{
-    Name: string;
-    Length: number;
-}
-
-type ComponentRef = string;
-
-interface Component{
-    Name: string;
-    Props: Record<string, Prop>;
-    Computed: Record<string, Computed>;
-    Methods: Record<string, Method>;
-    Components: Record<string, ComponentRef>;
-}
+import {Prop, Component, ComponentRef, Computed, Method, Type} from './scanComponents.types';
 
 const isComponent = (pluginPart: any) =>
     typeof pluginPart !== 'function';
@@ -38,7 +11,7 @@ const scanProp = (vueProp: [string, any]): Prop => {
     };
 };
 
-export const scan: (plugin: any) => Component[] =
+export const scanComponents: (plugin: any) => Component[] =
     plugin => {
         const components =
             Object.values(plugin)
