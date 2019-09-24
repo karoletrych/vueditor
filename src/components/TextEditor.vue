@@ -7,7 +7,7 @@
 
 <script>
     import source from './testSource.js';
-    const compiler = require('vue-template-compiler');
+    // const compiler = require('vue-template-compiler');
     export default {
         name: 'TextEditor',
         data() {
@@ -17,7 +17,7 @@
         },
         watch: {
             sourceCode(){
-                const ast = compiler.parseComponent(this.sourceCode);
+                // const ast = compiler.parseComponent(this.sourceCode);
 
             }
         }

@@ -3,7 +3,8 @@ import { Sortable } from '@shopify/draggable';
 
 const sortableDirective: DirectiveOptions = {
    inserted(el: HTMLElement, node, vNode) {
-      Sortable.create(el, node.value);
+      const S = Sortable;
+      new S(el, node.value);
    }
 };
 

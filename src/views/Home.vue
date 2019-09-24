@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import TemplateEditor from '@/components/TemplateEditor.vue';
+import TemplateEditor from '@/components/TemplateEditor/TemplateEditor.vue';
 import TextEditor from '@/components/TextEditor.vue';
 import Preview from '@/components/Preview.vue';
 

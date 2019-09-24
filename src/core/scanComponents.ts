@@ -1,4 +1,4 @@
-type Type = String | Number | Boolean | Object | Date| Function | Symbol; // TODO: Array?
+enum Type {String, Number, Boolean, Object, Date, Function, Symbol, Array}
 
 interface Prop
 {

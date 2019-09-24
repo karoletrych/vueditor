@@ -1,17 +1,16 @@
 <template>
     <div class="template-editor">
-        <select size="20">
-            <option v-for="element in elements" :key="element">{{element}}</option>
-        </select> 
 
         <ul v-sortable="defaultOptions">
             <li v-for="element in elements" :key="element">{{element}}</li>
         </ul> 
+        <Element/>
     </div>
 </template>
 
 <script>
     import sortableDirective from "./draggable.ts";
+    import Element from "./Element";
     export default {
         name: 'TemplateEditor',
         data(){
@@ -25,7 +24,8 @@
                 }
             };
         },
-        directives: {sortableDirective}
+        directives: {sortableDirective},
+        components: {Element}
     };
 </script>
 
