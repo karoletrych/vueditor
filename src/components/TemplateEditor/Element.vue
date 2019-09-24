@@ -29,7 +29,6 @@
     .element {
         border: 1px solid red;
         max-width: 33%;
-        flex-grow: 1;
-        display: flex;
+        display: inline-block;
     }
 </style>

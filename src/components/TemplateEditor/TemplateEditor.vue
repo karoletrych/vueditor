@@ -1,10 +1,12 @@
 <template>
     <div class="template-editor">
 
-        <ul v-sortable="defaultOptions">
+        <ul v-sortable="defaultOptions" class="toolbox">
             <li v-for="element in elements" :key="element">{{element}}</li>
         </ul> 
-        <Element/>
+        <div class="workspace">
+            <Element/>
+        </div>
     </div>
 </template>
 
@@ -35,5 +37,8 @@
         max-width: 33%;
         flex-grow: 1;
         display: flex;
+    }
+    .toolbox {
+        border: 1px solid red;
     }
 </style>
