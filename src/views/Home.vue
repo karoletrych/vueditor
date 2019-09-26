@@ -15,6 +15,7 @@ import store from '@/store';
 
 export default Vue.extend({
   name: 'home',
+  store,
   mounted(){
     // TODO: show loader
     store.commit('loadToolbox');

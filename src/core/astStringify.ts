@@ -16,7 +16,7 @@ export const StringifyTag: Stringify<Ast.Tag> = {
 export const StringifyBinding: Stringify<Ast.Binding> = { stringify: x => '{{' + x.BindingExpression + '}}' };
 export const StringifyAttribute: Stringify<Ast.Attribute> = { stringify: x => x.Key + '=' + '"' + x.Value + '"'};
 
-export const StringifyElement: Stringify<Ast.IElement> = { stringify: x => {
+export const StringifyElement: Stringify<Ast.Element> = { stringify: x => {
         const contents = x.ElementContents.map(content => {
             if (content.type === 'htmlString') {
                 return content.Content;

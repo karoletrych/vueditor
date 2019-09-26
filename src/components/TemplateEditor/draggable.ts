@@ -1,5 +1,5 @@
 import Vue, {DirectiveOptions} from 'vue';
-import { Sortable } from '@shopify/draggable';
+import { Sortable, Draggable } from '@shopify/draggable';
 
 const sortableDirective: DirectiveOptions = {
    inserted(el: HTMLElement, node, vNode) {
@@ -8,6 +8,15 @@ const sortableDirective: DirectiveOptions = {
    }
 };
 
-Vue.directive('sortable', sortableDirective);
+const draggableDirective: DirectiveOptions = {
+   inserted(el: HTMLElement, node, vNode) {
+      const D = Draggable;
+      new D(el, node.value);
+   }
+};
 
-export default sortableDirective;
+
+Vue.directive('sortable', sortableDirective);
+Vue.directive('draggable', draggableDirective);
+
+export {sortableDirective, draggableDirective};

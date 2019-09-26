@@ -30,9 +30,9 @@ export interface Binding {
     BindingExpression: string;
 }
 
-export type ElementContent = HtmlString | Binding | IElement;
+export type ElementContent = HtmlString | Binding | Element;
 
-export interface IElement {
+export interface Element {
     type: 'element';
     Tag: Tag;
     Attributes: Attribute[];

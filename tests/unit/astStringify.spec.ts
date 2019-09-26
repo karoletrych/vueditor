@@ -4,7 +4,7 @@ import * as StringifyAst from '@/core/astStringify';
 
 describe('AstStringify', () => {
   it('stringifies AST', () => {
-    const o: Ast.IElement = {
+    const o: Ast.Element = {
       type: 'element',
       Tag: {type: 'div'},
       Attributes: [{Key: 'v-show', Value: 'true'}],

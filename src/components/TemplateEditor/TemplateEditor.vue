@@ -13,12 +13,11 @@
 <script>
     import sortableDirective from './draggable.ts';
     import Element from './Element';
-    import store from '@/store'
     export default {
         name: 'TemplateEditor',
         computed: {
             toolboxElements(){
-                return store.state.toolbox.map(c=>c.Name);
+                return this.$store.state.toolbox.map(c=>c.Name);
             }
         },
         data(){
