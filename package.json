@@ -12,6 +12,7 @@
     "@types/uuid": "^3.4.5",
     "circular-dependency-plugin": "^5.2.0",
     "core-js": "^2.6.5",
+    "gh-pages": "^2.1.1",
     "interactjs": "^1.6.2",
     "keen-ui": "^1.2.0",
     "node-uid": "^0.1.3",

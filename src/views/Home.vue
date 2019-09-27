@@ -3,7 +3,6 @@
     <TemplateEditor />
     <TextEditor />
     <Preview />
-    <Ui
   </div>
 </template>
 
