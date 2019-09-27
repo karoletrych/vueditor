@@ -1,6 +1,6 @@
 <template>
     <div class="element" >
-        <div class="header" v-draggable="defaultOptions">
+        <div class="header">
             {{name}}
         </div>
         <ul>
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-    import draggableDirective from "./draggable.ts";
     export default {
         name: 'Element',
         data(){
@@ -27,7 +26,7 @@
                 }
             };
         },
-        directives: {draggableDirective}
+        directives: {}
     };
 </script>
 

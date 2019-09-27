@@ -1,4 +1,4 @@
-import {Prop, Component, ComponentRef, Computed, Method, Type} from './scanComponents.types';
+import {Prop, Component, ComponentRef, Computed, Method, Type, Slot} from './scanComponents.types';
 
 const isComponent = (pluginPart: any) =>
     typeof pluginPart !== 'function';
@@ -38,12 +38,12 @@ export const scanComponents: (plugin: any) => Component[] =
                                 o[m.Name] = m;
                                 return o;
                             } , {}),
-                        Components: Object.entries(component.components || [])
+                        ComponentRefs: Object.entries(component.components || [])
                             .map(([name, c]) => (c as any).name)
                             .reduce<Record<string, ComponentRef>>((o, cr) => {
                                 o[cr] = cr;
                                 return o;
-                            } , {})
+                            }, {})
                     });
                 }
             );

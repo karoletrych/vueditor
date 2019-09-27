@@ -1,5 +1,5 @@
 import Vue, {DirectiveOptions} from 'vue';
-import { Sortable, Draggable } from '@shopify/draggable';
+import { Sortable, Draggable, Droppable } from '@shopify/draggable';
 
 const sortableDirective: DirectiveOptions = {
    inserted(el: HTMLElement, node, vNode) {
@@ -15,8 +15,26 @@ const draggableDirective: DirectiveOptions = {
    }
 };
 
+const droppableDirective: DirectiveOptions = {
+    inserted(el: HTMLElement, node, vNode) {
+       const D = Droppable;
+       const x = new D(el, {
+        draggable: 'li',
+        dropzone: '.dropzone',
+        mirror: {
+          constrainDimensions: true,
+        },
+       });
+        x.on('drag:start', (evt : any) => {
+            console.log(evt);
+      });
+        
+    }
+ };
+ 
 
 Vue.directive('sortable', sortableDirective);
 Vue.directive('draggable', draggableDirective);
+Vue.directive('droppable', droppableDirective);
 
-export {sortableDirective, draggableDirective};
+export {sortableDirective, draggableDirective, droppableDirective};

@@ -11,32 +11,37 @@ Vue.use(Vuex);
 type ElementDto = Element & {id: string};
 
 interface Workspace {
-  elements: ElementDto[];
+    elements: ElementDto[];
 }
 
 interface State {
-  toolbox: Component[];
-  workspace: Workspace;
+    toolbox: Component[];
+    workspace: Workspace;
 }
 
 
 export default new Vuex.Store<State>({
-  state: {
-    toolbox: [],
-    workspace: {
-      elements: []
-    }
-  },
-  mutations: {
-    loadToolbox(state){
-      const toolbox = scanComponents(KeenUI);
-      state.toolbox = toolbox;
+    state: {
+        toolbox: [],
+        workspace: {
+            elements: []
+        }
     },
-    addElementToWorkspace(state, element: Element){
-      const elementDto = {...element, id: v4() };
-      state.workspace.elements.push(elementDto);
-    }
-  },
-  actions: {
-  },
+    getters: {
+        toolboxElementLabels: state => {
+            return state.toolbox.map(e => e.Name);
+        }
+    },
+    mutations: {
+        loadToolbox(state){
+            const toolbox = scanComponents(KeenUI);
+            state.toolbox = toolbox;
+        },
+        addElementToWorkspace(state, element: Element){
+            const elementDto = {...element, id: v4() };
+            state.workspace.elements.push(elementDto);
+        }
+    },
+    actions: {
+    },
 });

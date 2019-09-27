@@ -3,6 +3,7 @@
     <TemplateEditor />
     <TextEditor />
     <Preview />
+    <Ui
   </div>
 </template>
 
@@ -16,10 +17,6 @@ import store from '@/store';
 export default Vue.extend({
   name: 'home',
   store,
-  mounted(){
-    // TODO: show loader
-    store.commit('loadToolbox');
-  },
   components: {
     TemplateEditor,
     TextEditor,

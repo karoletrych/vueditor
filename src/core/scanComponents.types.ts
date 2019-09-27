@@ -17,6 +17,11 @@ export interface Method
     Length: number;
 }
 
+export interface Slot
+{
+    Name: string;
+}
+
 export type ComponentRef = string;
 
 export interface Component{
@@ -24,5 +29,5 @@ export interface Component{
     Props: Record<string, Prop>;
     Computed: Record<string, Computed>;
     Methods: Record<string, Method>;
-    Components: Record<string, ComponentRef>;
+    ComponentRefs: Record<string, ComponentRef>;
 }

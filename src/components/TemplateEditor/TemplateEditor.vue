@@ -1,36 +1,37 @@
 <template>
     <div class="template-editor">
-
-        <ul v-sortable="defaultOptions" class="toolbox">
-            <li v-for="element in toolboxElements" :key="element">{{element}}</li>
+        <ul class="toolbox dropzone" v-droppable>
+            <li 
+                v-for="element in toolboxElements" 
+                :key="element">
+                {{element}}
+            </li>
         </ul> 
-        <div class="workspace">
+        <div class="workspace dropzone" v-droppable>
             <Element/>
         </div>
     </div>
 </template>
 
 <script>
-    import sortableDirective from './draggable.ts';
+    import {draggableDirective, droppableDirective} from './draggable.ts';
     import Element from './Element';
     export default {
         name: 'TemplateEditor',
+          beforeCreate(){
+            // TODO: show loader
+            this.$store.commit('loadToolbox');
+        },
         computed: {
             toolboxElements(){
-                return this.$store.state.toolbox.map(c=>c.Name);
+                return this.$store.getters.toolboxElementLabels;
             }
         },
         data(){
             return {
-                defaultOptions: {
-                    draggable: 'li',
-                    mirror: {
-                        constrainDimensions: true,
-                    }
-                }
             };
         },
-        directives: {sortableDirective},
+        directives: {droppableDirective},
         components: {Element}
     };
 </script>
