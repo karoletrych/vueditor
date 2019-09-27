@@ -1,6 +1,7 @@
 const CircularDependencyPlugin = require('circular-dependency-plugin')
 
 module.exports = {
+	publicPath: "vueditor",
     configureWebpack: (config) => ({
         devtool: 'source-map',
         plugins:
