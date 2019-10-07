@@ -6,16 +6,16 @@ describe('AstStringify', () => {
   it('stringifies AST', () => {
     const o: Ast.Element = {
       type: 'element',
-      Tag: {type: 'div'},
-      Attributes: [{Key: 'v-show', Value: 'true'}],
-      ElementContents: [
+      tag: {type: 'div'},
+      attributes: [{key: 'v-show', value: 'true'}],
+      elementContents: [
           {
               type: 'element',
-              Tag: {type: 'p'},
-              Attributes: [],
-              ElementContents: [
-                  {type: 'binding', BindingExpression: 'greeting' },
-                  {type: 'htmlString', Content: ' World!'},
+              tag: {type: 'p'},
+              attributes: [],
+              elementContents: [
+                  {type: 'binding', bindingExpression: 'greeting' },
+                  {type: 'htmlString', content: ' World!'},
               ],
           },
       ],

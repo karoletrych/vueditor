@@ -17,26 +17,26 @@ export interface ComponentTag {type: 'componentTag'; componentName: string; }
 export type Tag = HtmlTag | ComponentTag;
 
 export interface Attribute {
-    Key: string;
-    Value?: string;
+    key: string;
+    value?: string;
 }
 
 export interface HtmlString {
     type: 'htmlString';
-    Content: string;
+    content: string;
 }
 export interface Binding {
     type: 'binding';
-    BindingExpression: string;
+    bindingExpression: string;
 }
 
 export type ElementContent = HtmlString | Binding | Element;
 
 export interface Element {
     type: 'element';
-    Tag: Tag;
-    Attributes: Attribute[];
-    ElementContents: ElementContent[];
+    tag: Tag;
+    attributes: Attribute[];
+    elementContents: ElementContent[];
 }
 
 

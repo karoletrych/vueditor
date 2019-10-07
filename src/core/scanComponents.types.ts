@@ -2,32 +2,32 @@ export enum Type {String, Number, Boolean, Object, Date, Function, Symbol, Array
 
 export interface Prop
 {
-    Name: string;
-    Type: Type;
-    Default: any;
+    name: string;
+    type: Type;
+    default: any;
 }
 export interface Computed
 {
-    Name: string;
+    name: string;
 }
 
 export interface Method
 {
-    Name: string;
-    Length: number;
+    name: string;
+    length: number;
 }
 
 export interface Slot
 {
-    Name: string;
+    name: string;
 }
 
 export type ComponentRef = string;
 
 export interface Component{
-    Name: string;
-    Props: Record<string, Prop>;
-    Computed: Record<string, Computed>;
-    Methods: Record<string, Method>;
-    ComponentRefs: Record<string, ComponentRef>;
+    name: string;
+    props: Record<string, Prop>;
+    computed: Record<string, Computed>;
+    methods: Record<string, Method>;
+    componentRefs: Record<string, ComponentRef>;
 }

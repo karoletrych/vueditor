@@ -1,10 +1,15 @@
 <template>
-    <div class="element" >
+    <div class="element-instance" >
         <div class="header">
             {{name}}
         </div>
         <ul>
-            <li v-for="element in elements" :key="element">{{element}}</li>
+            <li 
+                v-for="prop in props" 
+                :key="prop.name"
+                >
+                {{propInstance}}
+            </li>
         </ul> 
         <div class="content">
         </div>
@@ -14,24 +19,23 @@
 <script>
     export default {
         name: 'Element',
-        data(){
-            return {
-                name: "ui-alert",
-                elements: ['volvo', 'saab', 'mercedes'],
-                defaultOptions: {
-                    draggable: 'li',
-                    mirror: {
-                        constrainDimensions: true,
-                    }
-                }
-            };
+        computed:{
+            props(){
+                return this.$store.getters.elementInstance(this.elementInstanceId).props;
+            },
+            name(){
+                return this.$store.getters.elementInstance(this.elementInstanceId).name;
+            }
+        },
+        props:{
+            elementInstanceId:{type: String, required: true}
         },
         directives: {}
     };
 </script>
 
 <style lang="scss" scoped>
-    .element {
+    .element-instance {
         border: 1px solid red;
         display: inline-block;
     }

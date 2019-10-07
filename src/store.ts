@@ -11,7 +11,7 @@ Vue.use(Vuex);
 type ElementDto = Element & {id: string};
 
 interface Workspace {
-    elements: ElementDto[];
+    elementInstances: ElementDto[];
 }
 
 interface State {
@@ -24,22 +24,30 @@ export default new Vuex.Store<State>({
     state: {
         toolbox: [],
         workspace: {
-            elements: []
+            elementInstances: []
         }
     },
     getters: {
         toolboxElementLabels: state => {
-            return state.toolbox.map(e => e.Name);
-        }
+            return state.toolbox.map(e => e.name);
+        },
+        elementInstances: state => {
+            return state.workspace.elementInstances;
+        },
+        elementInstance: state =>
+            (elementInstanceId: string) => {
+                // TODO: add lookup or lookup getter?
+                return state.workspace.elementInstances.find(ei => ei.id === elementInstanceId);
+            }
     },
     mutations: {
         loadToolbox(state){
             const toolbox = scanComponents(KeenUI);
             state.toolbox = toolbox;
         },
-        addElementToWorkspace(state, element: Element){
+        createElementInstance(state, element: Element){
             const elementDto = {...element, id: v4() };
-            state.workspace.elements.push(elementDto);
+            state.workspace.elementInstances.push(elementDto);
         }
     },
     actions: {

@@ -13,28 +13,28 @@ export const StringifyTag: Stringify<Ast.Tag> = {
     },
 };
 
-export const StringifyBinding: Stringify<Ast.Binding> = { stringify: x => '{{' + x.BindingExpression + '}}' };
-export const StringifyAttribute: Stringify<Ast.Attribute> = { stringify: x => x.Key + '=' + '"' + x.Value + '"'};
+export const StringifyBinding: Stringify<Ast.Binding> = { stringify: x => '{{' + x.bindingExpression + '}}' };
+export const StringifyAttribute: Stringify<Ast.Attribute> = { stringify: x => x.key + '=' + '"' + x.value + '"'};
 
 export const StringifyElement: Stringify<Ast.Element> = { stringify: x => {
-        const contents = x.ElementContents.map(content => {
+        const contents = x.elementContents.map(content => {
             if (content.type === 'htmlString') {
-                return content.Content;
+                return content.content;
             }
             else if (content.type === 'binding') {
-                return '{{' +  content.BindingExpression + '}}';
+                return '{{' +  content.bindingExpression + '}}';
             }
             else if (content.type === 'element')
                 return StringifyElement.stringify(content);
 
         }).join('');
-        const attributes = x.Attributes.map(attr => StringifyAttribute.stringify(attr)).join(' ');
+        const attributes = x.attributes.map(attr => StringifyAttribute.stringify(attr)).join(' ');
 
-        return '<' + StringifyTag.stringify(x.Tag) + (attributes.length > 0 ? ' ' : '') +
+        return '<' + StringifyTag.stringify(x.tag) + (attributes.length > 0 ? ' ' : '') +
             attributes +
             '>' +
             contents +
-            '</' + StringifyTag.stringify(x.Tag) + '>';
+            '</' + StringifyTag.stringify(x.tag) + '>';
         },
 };
 

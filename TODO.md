@@ -4,4 +4,8 @@ in the future we should add "import module" feature
 viewports:
 https://benfrain.com/independent-scrolling-panels-body-scroll-using-just-css/
 
-vuex store isn't statically typed :(
+vuex store isn't statically typed :( at this moment
+
+identify elements in toolbox by some id instead of name
+
+

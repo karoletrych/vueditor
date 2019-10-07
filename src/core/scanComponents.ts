@@ -5,9 +5,9 @@ const isComponent = (pluginPart: any) =>
 
 const scanProp = (vueProp: [string, any]): Prop => {
     return {
-        Default: vueProp[1].default,
-        Name: vueProp[0],
-        Type: vueProp[1].type || vueProp[1]
+        default: vueProp[1].default,
+        name: vueProp[0],
+        type: vueProp[1].type || vueProp[1]
     };
 };
 
@@ -19,26 +19,26 @@ export const scanComponents: (plugin: any) => Component[] =
                 .map((componentAny) => {
                     const component = componentAny as any;
                     return ({
-                        Name: component.name as string,
-                        Props: Object.entries(component.props)
+                        name: component.name as string,
+                        props: Object.entries(component.props)
                                 .map(scanProp)
                                 .reduce<Record<string, Prop>>((o, p) => {
-                                    o[p.Name] = p;
+                                    o[p.name] = p;
                                     return o;
                                 } , {}),
-                        Computed: Object.entries(component.computed || [])
-                            .map(([name, type]) => ({Name: name}))
+                        computed: Object.entries(component.computed || [])
+                            .map(([name, type]) => ({name: name}))
                             .reduce<Record<string, Computed>>((o, c) => {
-                                o[c.Name] = c;
+                                o[c.name] = c;
                                 return o;
                                 } , {}),
-                        Methods: Object.entries(component.methods || [])
-                            .map(([name, m]) => ({Name: name, Length: (m as Function).length}))
+                        methods: Object.entries(component.methods || [])
+                            .map(([name, m]) => ({name: name, length: (m as Function).length}))
                             .reduce<Record<string, Method>>((o, m) => {
-                                o[m.Name] = m;
+                                o[m.name] = m;
                                 return o;
                             } , {}),
-                        ComponentRefs: Object.entries(component.components || [])
+                        componentRefs: Object.entries(component.components || [])
                             .map(([name, c]) => (c as any).name)
                             .reduce<Record<string, ComponentRef>>((o, cr) => {
                                 o[cr] = cr;
